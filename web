@@ -1,0 +1,16 @@
+#!/bin/bash
+
+
+if ! [ $(id -u) == 0 ]; then
+   echo 'The script need to be run as root'
+   exit 1
+fi
+
+
+if [ "$1" == "start" ]; then
+   echo 'Starting Apache and Mysql Server'
+   service apache2 start && service mysql start
+elif [ "$1" == "stop" ]; then 
+   echo 'Stoping Apache and Mysql Server'
+   service apache2 stop && service mysql stop
+fi
